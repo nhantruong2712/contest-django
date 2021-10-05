@@ -1,0 +1,14 @@
+env
+Lib/
+Scripts/
+pyvenv.cfg
+ContestAi/static/demo/
+ContestAi/static/contest/*/
+# ContestAi/static 
+# ContestAi/media 
+# backend/accounts/migrations/ 
+# backend/accounts_1/migrations/
+# backend/*/migrations/
+ContestAi/*/migrations/
+ContestAi/*/__pycache__/
+db.sqlite3

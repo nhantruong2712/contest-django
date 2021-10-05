@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+<!--<div></div>-->
+{% block script %} {% include './javaScript.js' %} {% endblock %}
+<!--<div></div>-->
+{% block css %} {% include './style.css' %} {% endblock %}
+<!--<div></div>-->
+{% block title %}Login{% endblock%}
+<!--<div></div>-->
+{% load static %} {% block body %}
+<div class="container" style="min-height: 80vh">
+  <h1 class="text-center mt-5">Login Pages</h1>
+  <div class="card card-container fade-in-left">
+    <div class="card-body">
+      <img
+        id="profile-img"
+        class="profile-img-card"
+        src="{% static 'images/cat.jpg' %}"
+      />
+      <p id="profile-name" class="profile-name-card"></p>
+      <form class="form-signin" method="POST" action="">
+        {% csrf_token %}
+        <span id="reauth-email" class="reauth-email"></span>
+        <input
+          type="text"
+          id="inputEmail"
+          class="form-control"
+          placeholder="UserName or Email"
+          required
+          autofocus
+          name="userName"
+        />
+        <input
+          type="password"
+          id="inputPassword"
+          class="form-control"
+          placeholder="Password"
+          required
+          name="password"
+        />
+        <button class="btn btn-primary btn-signin" type="submit">
+          Sign in
+        </button>
+      </form>
+      <!-- /form -->
+      <a href="{% url 'signUp' %}" class="forgot-password"> Sign Up </a>
+      <p class="text-warning mt-3 font-weight-bold">{{ mess }}</p>
+    </div>
+  </div>
+  <!-- /card-container -->
+</div>
+{% endblock %}
