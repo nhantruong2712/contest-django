@@ -19,7 +19,7 @@ class Contest(models.Model):
     TimeStart = models.DateTimeField()
     TimeEnd = models.DateTimeField()
     TimeOut = models.IntegerField()
-    IDLanguage = models.CharField(max_length=100)
+    IDLanguage = models.CharField(max_length=100, null=True, blank=True)
 
 class Status(models.Model):
     IDcontest = models.CharField(max_length=100)

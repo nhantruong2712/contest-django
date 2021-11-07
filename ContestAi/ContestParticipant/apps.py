@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ContestparticipantConfig(AppConfig):
+class Contestparticipant(AppConfig):
     name = 'ContestParticipant'

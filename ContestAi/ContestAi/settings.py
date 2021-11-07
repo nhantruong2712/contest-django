@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'devs',
     'Auth',
     'ContestAdmin',
-    'ContestParticipant.apps.ContestparticipantConfig'
+    'ContestParticipant',
+    'axes',
+    'blacklist',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
+    'blacklist.middleware.BlacklistMiddleware',
 ]
 
 ROOT_URLCONF = 'ContestAi.urls'
@@ -90,6 +94,13 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    # AxesBackend should be the first backend in the AUTHENTICATION_BACKENDS list.
+    'axes.backends.AxesBackend',
+
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -162,3 +173,7 @@ CACHES = {
 }
 
 REDIS_URL = 'redis://localhost:6379/0'
+BANISH_ENABLED = True
+BANISH_EMPTY_UA = True
+BLACKLIST_RELOAD_PERIOD = 1
+AXES_FAILURE_LIMIT = 6

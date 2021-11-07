@@ -40,6 +40,20 @@
         </div>
       </div>
       {% endif %}
+      {% if registerStatus == 'Already registered' %}
+
+      <div class="card mb-4 fade-in-left">
+        <div class="card-body status-body">
+          <i class="bi bi-check-circle-fill text-success icon-status mr-5"></i>
+          <h3>You are already registered</h3>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{% url 'start' id=contest.id %}"
+            ><button class="btn btn-success">Jump into it</button></a
+          >
+        </div>
+      </div>
+      {% endif %}
     </div>
     <div class="col-lg-3 col-sm-12 pb-4">
       <div class="card card-sidebar fade-in-right">

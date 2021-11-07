@@ -150,9 +150,13 @@ class Register(View):
                 status = ''
                 if time_now > time_reg and time_now < time_start:
                     try:
-                        regisTemplate = models.RegisterContest(IDContest=id,IDUser=userId)
-                        regisTemplate.save()
-                        status = 'OK'
+                        check = models.RegisterContest.objects.filter(IDContest=id,IDUser=userId).exists()
+                        if check:
+                            status = 'Already registered'
+                        else:
+                            regisTemplate = models.RegisterContest(IDContest=id,IDUser=userId)
+                            regisTemplate.save()
+                            status = 'OK'
                     except Exception as e:
                         print(e)
                         status = 'FAIL'

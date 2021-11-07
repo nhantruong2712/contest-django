@@ -9,7 +9,6 @@ import re
 
 
 class Login(View):
-
     def get(self, request):
         if request.user.is_superuser:
             return redirect('/account/')

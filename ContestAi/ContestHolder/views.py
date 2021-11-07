@@ -6,6 +6,8 @@ from .data import mockData, mockUser, mockStatus
 from ContestAdmin import models
 from django.contrib.auth.models import User
 import os
+from django.contrib import messages
+
 
 class HolderView(View):
     def get(self, request):
@@ -126,6 +128,7 @@ class CreateContest(View):
             test = request.FILES['test']
             tester = request.FILES['tester']
         except:
+            messages.error(request, 'Create contest is not successful, please fill in full fields')
             return redirect('create')
         timeout = request.POST.get('timeOut')
         try:
@@ -140,6 +143,7 @@ class CreateContest(View):
             obj.save()
             id = str(obj.id)
         except:
+            messages.error(request, 'Create contest is not successful')
             return redirect('create')
         path = './static/contest/contest'+id
         if not os.path.exists(path):

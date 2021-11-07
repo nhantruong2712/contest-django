@@ -8,6 +8,12 @@
 <div class="container" style="min-height: 80vh">
   <h1 class="text-center mt-5 mb-5 fade-in">Create Contest Pages</h1>
   <!-- /card-container -->
+  {% for message in messages %}
+    <div class="alert alert-dismissible alert-{{ message.tags }}">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p style="color: red">{{ message|safe }}</p>
+    </div>
+    {% endfor %}
   <form method="POST" action="" id="create" enctype="multipart/form-data">
     <div class="row">
       <div class="col-lg-9 col-sm-12">
